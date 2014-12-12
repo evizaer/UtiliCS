@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -167,6 +168,11 @@ namespace UtiliCS
         public static IEnumerable<int> Times(this int count)
         {
             return Enumerable.Range(1, count);
-        } 
+        }
+
+        public static void AddRange<T>(this ObservableCollection<T> collection, IEnumerable<T> itemsToAdd)
+        {
+            itemsToAdd.Do(collection.Add);
+        }
     }
 }
