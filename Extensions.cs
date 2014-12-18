@@ -174,5 +174,21 @@ namespace UtiliCS
         {
             itemsToAdd.Do(collection.Add);
         }
+
+        public static List<T> Shuffle<T>(this IList<T> ls)
+        {
+            var result = new List<T>(ls);
+
+            for (int i = 0; i < ls.Count; i++)
+            {
+                int j = Dice.GetInt(ls.Count);
+
+                var t = result[i];
+                result[i] = result[j];
+                result[j] = t;
+            }
+
+            return result;
+        }
     }
 }
